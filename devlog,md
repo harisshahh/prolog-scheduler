@@ -1,0 +1,4 @@
+# May 10 2026 3:05 PM
+
+Thoughts so far:
+I have to build a work scheduler in Prolog that assigns some employees to workstations and shifts, while still making sure that I am within the constraints of the project. For the past few days I have been thinking about how I will be able to represent these assignments internally. I just got the project structure laid out and I think the recursion and backtracking aspect of Prolog might be the biggest challenge I face when building this out.
