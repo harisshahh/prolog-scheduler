@@ -1,4 +1,7 @@
-# May 10 2026 3:05 PM
+# May 10 3:05 PM
 
 Thoughts so far:
 I have to build a work scheduler in Prolog that assigns some employees to workstations and shifts, while still making sure that I am within the constraints of the project. For the past few days I have been thinking about how I will be able to represent these assignments internally. I just got the project structure laid out and I think the recursion and backtracking aspect of Prolog might be the biggest challenge I face when building this out.
+
+# May 10 5:10 PM
+I have already started setting up the basic structure of the scheduler, with defining the three shifts and making helper predicates to work with the employee list from the facts file.. I also added some predicates for workstation_idle, avoid_shift, and avoid_workstation so that the program won't crash when some facts are missing. Another thing I have started writing is a can_work predicate which checks whether an employee is able to work at a given workstation given a shift. It checks the validity of the shift, the existence of the workstation, and then applies these for avoiding either of them. Also, one thing that I have noticed with writing in Prolog is how different it is from what I am used to coding with because there are no loops, just recursion and backtracking.
