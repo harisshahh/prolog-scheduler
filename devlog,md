@@ -8,3 +8,6 @@ I have already started setting up the basic structure of the scheduler, with def
 
 # May 10 8:00 PM
 So now that the basic constraint checking with the can_work predicate got set up, I now had to start actually generating the assignments for each employee. This part did feel a little bit more complex because instead of just checking conditions, I now need Prolog to choose the valid combinations of shifts and workstations. Through a recursive generate_assignments predicate I implemented, it takes a list of employees and assigns each of them a valid shift and workstaion pair using backtracking from the can_work predicate. 
+
+# May 10 9:00 PM
+I now focused on counting how many employees are assigned to a workstation during a shift and then checking these counts with the maximum and minimum workstation constraints. The recursive logic took some time for me because I had to think through separating the assignment cases in where there is either a match or none. Now this scheduler is feeling more complete because of the fact that it can now generate the assignments and reject the invalid staffing arrangements.

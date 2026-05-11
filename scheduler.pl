@@ -26,3 +26,40 @@ generate_assignments([Employee | RestOfEmployees],
 
     can_work(Employee, Shift, Workstation),
     generate_assignments(RestOfEmployees, RestOfAssignments).
+
+count_workers(_, _, [], 0).
+
+count_workers(Shift, Workstation,
+    [assign(_, Shift, Workstation) | Rest],
+    Count) :-
+    count_workers(Shift, Workstation, Rest, RestCount),
+    Count is RestCount + 1.
+count_workers(Shift, Workstation,
+    [assign(_, OtherShift, OtherWorkstation) | Rest],
+    Count) :-
+    (
+        Shift \= OtherShift
+        ;
+        Workstation \= OtherWorkstation
+    ),
+
+    count_workers(Shift, Workstation, Rest, Count).
+
+valid_workstation_counts(Assignments) :- % to validate the workstation counts
+    forall(
+        (
+            workstation(Workstation, Min, Max),
+            shift(Shift),
+            \+ workstation_idle(Workstation, Shift)
+        ),
+        (
+            count_workers(
+                Shift,
+                Workstation,
+                Assignments,
+                Count
+            ),
+            Count >= Min,
+            Count =< Max
+        )
+    ).
