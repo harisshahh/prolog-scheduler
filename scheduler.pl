@@ -45,7 +45,7 @@ count_workers(Shift, Workstation,
 
     count_workers(Shift, Workstation, Rest, Count).
 
-valid_workstation_counts(Assignments) :- % to validate the workstation counts
+valid_workstation_count(Assignments) :- % to validate the workstation counts
     forall(
         (
             workstation(Workstation, Min, Max),
@@ -62,4 +62,39 @@ valid_workstation_counts(Assignments) :- % to validate the workstation counts
             Count >= Min,
             Count =< Max
         )
+    ).
+
+employees_for_workstation(
+    Shift,
+    Workstation,
+    Assignments,
+    Employees
+) :-
+    findall(
+        Employee,
+        member(
+            assign(Employee, Shift, Workstation),
+            Assignments
+        ),
+        Employees
+    ).
+create_shift_schedule(
+    Shift,
+    Assignments,
+    Schedule
+) :-
+    findall(
+        workstation(Workstation, Employees),
+        (
+            workstation(Workstation, _, _),
+            \+ workstation_idle(Workstation, Shift),
+            employees_for_workstation(
+                Shift,
+                Workstation,
+                Assignments,
+                Employees
+            ),
+            Employees \= []
+        ),
+        Schedule
     ).
