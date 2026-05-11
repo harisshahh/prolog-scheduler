@@ -1,5 +1,4 @@
 # May 10 3:05 PM
-
 Thoughts so far:
 I have to build a work scheduler in Prolog that assigns some employees to workstations and shifts, while still making sure that I am within the constraints of the project. For the past few days I have been thinking about how I will be able to represent these assignments internally. I just got the project structure laid out and I think the recursion and backtracking aspect of Prolog might be the biggest challenge I face when building this out.
 
@@ -14,3 +13,6 @@ I now focused on counting how many employees are assigned to a workstation durin
 
 # May 10 10:24 PM
 In this period of time I have mainly focused on converting the raw assignments data into the actual final plan formatting or structure required for the project. I used predicates to collect all employees assigned to a workstation at a given shift using findall and then I grouped these assignments of the workstations into shift schedules. Now the scheduler is looking like how it is supposed to.
+
+# May 10 11:15 PM
+This final session mostly was focused on integrating all of the previous predicates together into the complete work scheduler. I added the final plan predicate which compiles all together the employee assignments generation, the workstation staffing validity, and the shift scheduler into the required output. After integrating, I spend some time with the test files and making sure that the invalid schedules fail as they are supposed to. I also added a README with instructions for loading and running the scheduler in SWI-Prolog.

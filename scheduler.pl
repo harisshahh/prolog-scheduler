@@ -98,3 +98,28 @@ create_shift_schedule(
         ),
         Schedule
     ).
+
+
+
+plan(plan(Morning, Evening, Night)) :-
+    all_employees(Employees),
+    generate_assignments(
+        Employees,
+        Assignments
+    ),
+    valid_workstation_count(Assignments),
+    create_shift_schedule(
+        morning,
+        Assignments,
+        Morning
+    ),
+    create_shift_schedule(
+        evening,
+        Assignments,
+        Evening
+    ),
+    create_shift_schedule(
+        night,
+        Assignments,
+        Night
+    ).
